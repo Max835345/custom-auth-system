@@ -73,9 +73,9 @@
 
 ### Регистрация
 
-**POST** `/auth/register/`
-
 ```json
+
+POST `/auth/register/`
 {
   "first_name": "A",
   "last_name": "B",
@@ -84,7 +84,7 @@
   "password": "123456",
   "password_repeat": "123456"
 }
-Post /auth/login/
+POST /auth/login/
 {
   "email": "a@example.com",
   "password": "123456"
