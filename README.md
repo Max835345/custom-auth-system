@@ -75,7 +75,7 @@
 
 **POST** `/auth/register/`
 
-json
+```json
 {
   "first_name": "A",
   "last_name": "B",
