@@ -4,12 +4,10 @@ def check_permission(user, resource_name: str, action: str) -> bool:
     if not user:
         return False
 
-    # Получаем роли пользователя
     user_roles = UserRole.objects.filter(user=user).select_related("role")
 
     role_ids = [ur.role.id for ur in user_roles]
 
-    # Ищем permission
     permissions = Permission.objects.filter(
         resource__name=resource_name,
         action=action
@@ -20,7 +18,6 @@ def check_permission(user, resource_name: str, action: str) -> bool:
 
     permission_ids = [p.id for p in permissions]
 
-    # Проверяем есть ли связка role → permission
     has_permission = RolePermission.objects.filter(
         role_id__in=role_ids,
         permission_id__in=permission_ids
